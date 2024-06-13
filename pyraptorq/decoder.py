@@ -9,13 +9,11 @@ class Decoder:
             symbol_count,
             symbol_size,
             data_size,
-            raptorq_engine: RaptorQEngine = None
+            raptorq_engine: RaptorQEngine = RaptorQCppEngine.default()
     ):
         self.symbol_count = symbol_count
         self.symbol_size = symbol_size
         self.data_size = data_size
-        if raptorq_engine is None:
-            raptorq_engine = RaptorQCppEngine.default()
         self.raptorq_engine = raptorq_engine
         self.decoder = self.raptorq_engine.get_decoder(
             symbol_count,
